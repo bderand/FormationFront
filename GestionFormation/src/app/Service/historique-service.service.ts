@@ -10,7 +10,7 @@ export class HistoriqueServiceService {
   constructor(private http:HttpClient) { }
 
   getAll(){
-    return this.http.get<Historique[]>('http://localhost:8020/api/historique')
+    return this.http.get<Historique[]>('http://localhost:8020/api/historiques')
   }
 
   getbyId(id:number){
