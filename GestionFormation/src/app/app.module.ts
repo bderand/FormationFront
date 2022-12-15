@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,10 +32,20 @@ import { UtilisateurComponentComponent } from './Component/utilisateur-component
     UtilisateurComponentComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [/*{
+    provide: HTTP_INTERCEPTORS,
+    useClass: interceptorInterceptor,
+    multi: true,
+  },
+  GuardGuard*/
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
