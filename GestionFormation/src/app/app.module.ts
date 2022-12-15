@@ -18,6 +18,8 @@ import { RoleComponentComponent } from './Component/role-component/role-componen
 import { UtilisateurComponentComponent } from './Component/utilisateur-component/utilisateur-component.component';
 import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
+import { ConnexionComponent } from './Component/connexion/connexion.component';
+import { InscriptionComponent } from './Component/inscription/inscription.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { FooterComponent } from './Component/footer/footer.component';
     RoleComponentComponent,
     UtilisateurComponentComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ConnexionComponent,
+    InscriptionComponent
   ],
   imports: [
     RouterModule,
