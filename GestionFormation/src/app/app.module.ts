@@ -16,6 +16,8 @@ import { PersonneComponentComponent } from './Component/personne-component/perso
 import { RDVComponentComponent } from './Component/rdvcomponent/rdvcomponent.component';
 import { RoleComponentComponent } from './Component/role-component/role-component.component';
 import { UtilisateurComponentComponent } from './Component/utilisateur-component/utilisateur-component.component';
+import { HeaderComponent } from './Component/header/header.component';
+import { FooterComponent } from './Component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UtilisateurComponentComponent } from './Component/utilisateur-component
     PersonneComponentComponent,
     RDVComponentComponent,
     RoleComponentComponent,
-    UtilisateurComponentComponent
+    UtilisateurComponentComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     RouterModule,
