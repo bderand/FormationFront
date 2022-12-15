@@ -1,13 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Formateur } from '../Model/formateur.model';
 import { Formation } from '../Model/formation.model';
 import { Participant } from '../Model/participant.model';
+
+import { Formation } from '../Model/formation.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormationServiceService {
+
 
   url:string = "http://localhost:8020/api/Formations"
 
