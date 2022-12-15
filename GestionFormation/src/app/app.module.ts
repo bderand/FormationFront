@@ -1,0 +1,38 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CommercialComponentComponent } from './Component/commercial-component/commercial-component.component';
+import { FormateurComponentComponent } from './Component/formateur-component/formateur-component.component';
+import { FormationComponentComponent } from './Component/formation-component/formation-component.component';
+import { HistoriqueComponentComponent } from './Component/historique-component/historique-component.component';
+import { PaiementComponentComponent } from './Component/paiement-component/paiement-component.component';
+import { ParticipantComponentComponent } from './Component/participant-component/participant-component.component';
+import { PersonneComponentComponent } from './Component/personne-component/personne-component.component';
+import { RDVComponentComponent } from './Component/rdvcomponent/rdvcomponent.component';
+import { RoleComponentComponent } from './Component/role-component/role-component.component';
+import { UtilisateurComponentComponent } from './Component/utilisateur-component/utilisateur-component.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    CommercialComponentComponent,
+    FormateurComponentComponent,
+    FormationComponentComponent,
+    HistoriqueComponentComponent,
+    PaiementComponentComponent,
+    ParticipantComponentComponent,
+    PersonneComponentComponent,
+    RDVComponentComponent,
+    RoleComponentComponent,
+    UtilisateurComponentComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
