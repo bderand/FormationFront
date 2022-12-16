@@ -30,8 +30,8 @@ export class PersonneServiceService {
     return this.http.delete<Personne>(`http://localhost:8020/api/personnes/${id}`)
   }
 
-  contact(data : FormData){
-    return this.http.post<Personne>('http://localhost:8020/api/personnes', data)
+  contact(data : FormData, id:number){
+    return this.http.post<Personne>(`http://localhost:8020/api/personnes/contact/${id}`, data)
   }
 
   

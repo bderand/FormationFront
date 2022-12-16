@@ -1,1 +1,21 @@
-<p>message-component works!</p>
+<h1 class="text-center">messagerie de l'annonce n°{{id}}</h1>
+
+<form (ngSubmit)="ajout()">
+    <fieldset>
+        <legend>envoyer un message</legend>
+        <div class="form-group row">
+            <label for="titre" class="col-sm-2 col-form-label">titre du message</label>
+            <div class="col-sm-10">
+              <input type="text" name="titre" [(ngModel)]="titre" class="form-control" id="titre" placeholder="ajouter un titre">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="message" class="col-sm-2 col-form-label">message</label>
+            <div class="col-sm-10">
+              <input type="text" name="message" [(ngModel)]="message" class="form-control" id="message" placeholder="ajouter un message">
+            </div>
+        </div>
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
+    </fieldset>
+    <p class="text-center">{{info}}</p>
+</form>

@@ -6,6 +6,7 @@ import { FormateurComponentComponent } from './Component/formateur-component/for
 import { FormationComponentComponent } from './Component/formation-component/formation-component.component';
 import { HistoriqueComponentComponent } from './Component/historique-component/historique-component.component';
 import { InscriptionComponent } from './Component/inscription/inscription.component';
+import { MessageComponentComponent } from './Component/message-component/message-component.component';
 import { PaiementComponentComponent } from './Component/paiement-component/paiement-component.component';
 import { ParticipantComponentComponent } from './Component/participant-component/participant-component.component';
 import { PersonneComponentComponent } from './Component/personne-component/personne-component.component';
@@ -17,7 +18,7 @@ const routes: Routes = [
   {path:'connexion', component:ConnexionComponent},
   {path:'commercial/inscription/:id', component:InscriptionComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'commercial/personnne', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
-  {path:'commercial/message/:id', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
+  {path:'commercial/message/:id', component:MessageComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'formateur/perso', component:FormateurComponentComponent, canActivate : [GuardGuard], data : {role : "formateur"}},
   {path:'formation', component:FormationComponentComponent, canActivate : [GuardGuard]},
   {path:'commercial/historique', component:HistoriqueComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
