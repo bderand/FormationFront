@@ -20,6 +20,8 @@ import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { ConnexionComponent } from './Component/connexion/connexion.component';
 import { InscriptionComponent } from './Component/inscription/inscription.component';
+import { GuardGuard } from './Guard/guard.guard';
+import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -47,12 +49,12 @@ import { InscriptionComponent } from './Component/inscription/inscription.compon
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [/*{
+  providers: [{
     provide: HTTP_INTERCEPTORS,
-    useClass: interceptorInterceptor,
+    useClass: InterceptorInterceptor,
     multi: true,
   },
-  GuardGuard*/
+  GuardGuard
 ],
   bootstrap: [AppComponent]
 })
