@@ -20,7 +20,10 @@ import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { ConnexionComponent } from './Component/connexion/connexion.component';
 import { InscriptionComponent } from './Component/inscription/inscription.component';
+
 import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
+import { MessageComponentComponent } from './Component/message-component/message-component.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
     HeaderComponent,
     FooterComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    MessageComponentComponent
   ],
   imports: [
     RouterModule,
@@ -53,7 +57,7 @@ import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
     useClass: InterceptorInterceptor,
     multi: true,
   }
- 
+
 ],
   bootstrap: [AppComponent]
 })
