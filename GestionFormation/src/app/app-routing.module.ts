@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ConnexionComponent } from './Component/connexion/connexion.component';
 import { FormateurComponentComponent } from './Component/formateur-component/formateur-component.component';
 import { FormationComponentComponent } from './Component/formation-component/formation-component.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path:'participant/perso', component:ParticipantComponentComponent, canActivate : [GuardGuard], data : {role : "participant"}},
   {path:'commercial/rdv', component:RDVComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'admin/utilisateur', component:UtilisateurComponentComponent, canActivate : [GuardGuard], data : {role : "admin"}}
-];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
