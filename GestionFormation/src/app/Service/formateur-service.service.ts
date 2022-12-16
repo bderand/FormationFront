@@ -24,22 +24,22 @@ export class FormateurServiceService {
 
   public getFormateur_formations(id:number){
 
-    return this.http.get<Formation[]>(this.url + `${id}/formations`);
+    return this.http.get<Formation[]>(this.url + `/${id}/formations`);
   }
 
   public ajoutFormateur(formateur:Formateur){
     
-    this.http.post(this.url,formateur);
+    return this.http.post(this.url,formateur);
   }
 
   public modifFormateur(formateur:Formateur){
 
-    this.http.put(this.url, formateur);
+    return this.http.put(this.url, formateur);
   }
 
   public suppFormateur(id:number){
 
-    this.http.delete(this.url + `/${id}`);
+    return this.http.delete(this.url + `/${id}`);
   }
 
 }

@@ -1,4 +1,5 @@
 import { Formateur } from "./formateur.model";
+import { Participant } from "./participant.model";
 
 export class Formation {
 
@@ -8,4 +9,5 @@ export class Formation {
     debut!:Date;
     fin!:Date;
     formateur!:Formateur;
+    participants!:Participant[];
 }
