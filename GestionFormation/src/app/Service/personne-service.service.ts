@@ -34,4 +34,6 @@ export class PersonneServiceService {
     return this.http.post<Personne>('http://localhost:8020/api/personnes', data)
   }
 
+  
+
 }

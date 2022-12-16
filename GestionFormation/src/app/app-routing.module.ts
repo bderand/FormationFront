@@ -15,7 +15,7 @@ import { GuardGuard } from './Guard/guard.guard';
 
 const routes: Routes = [
   {path:'connexion', component:ConnexionComponent},
-  {path:'commercial/inscription', component:InscriptionComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
+  {path:'commercial/inscription/:id', component:InscriptionComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'commercial/personnne', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'formateur/perso', component:FormateurComponentComponent, canActivate : [GuardGuard], data : {role : "formateur"}},
   {path:'formation', component:FormationComponentComponent, canActivate : [GuardGuard]},
