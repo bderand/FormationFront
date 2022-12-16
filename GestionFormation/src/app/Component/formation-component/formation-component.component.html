@@ -1,2 +1,62 @@
-<p>salut </p>
 
+<form *ngIf="user != null && user.role.nom == 'admin'" #f="ngForm" (ngSubmit)="ajouter(f)">
+    <div class="row mb-2">
+        <div class="col-sm-2">
+            <input type="text" [(ngModel)]="formation.nom" name="nom" class="form-control" [required]="true" placeholder="Nom">
+        </div>
+        <div class="col-sm-2">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    &euro;	
+                  </div>
+                </div>
+                <input type="number" [(ngModel)]="formation.prix" name="prix" class="form-control" [required]="true" placeholder="Prix">
+            </div>
+        </div>
+        </div>
+        <div class="row mb-2">
+        <div class="col-sm-2">
+            <input type="date" [(ngModel)]="formation.debut" name="debut" class="form-control" [required]="true" placeholder="Début">
+        </div>
+        <div class="col-sm-2">
+            <input type="date" [(ngModel)]="formation.fin" name="fin" class="form-control" [required]="true" placeholder="Fin">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-sm-3">
+            <select [(ngModel)]="id_formateur" name="formateur" class="form-control">
+                <option [selected]="id_formateur" [ngValue]="undefined">-- Choisir un formateur --</option>
+                <option *ngFor="let f of formateurs" [ngValue]="f.id" [selected]="f.id == id_formateur">{{f.nom}} {{f.prenom}}</option>
+            </select>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary mt-2" value="Valider">
+</form>
+<div class="row">
+    <div class="col-sm-8">
+        <table class="table table-sm mt-2">
+            <thead>
+                <tr>
+                    <th>Formation</th>
+                    <th>Prix</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                    <th></th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of formations">
+                    <td>{{f.nom}}</td>
+                    <td>{{f.prix}}</td>
+                    <td>{{f.debut}}</td>
+                    <td>{{f.fin}}</td>
+                    <td><a *ngIf="user!=null && user.role.nom=='admin'&& !f.formateur" (click)="modifier(f.id)" class="link-success">Associez un formateur</a></td>
+                    <td><a *ngIf="user!=null && user.role.nom=='admin'" (click)="supprimer(f.id)" class="link-danger">Supprimer</a></td>
+                    <td><a *ngIf="user!=null && user.role.nom=='admin'" (click)="modifier(f.id)" class="link-warning">Modifier</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

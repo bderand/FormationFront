@@ -19,11 +19,13 @@ const routes: Routes = [
   {path:'commercial/personnne', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'formateur/perso', component:FormateurComponentComponent, canActivate : [GuardGuard], data : {role : "formateur"}},
   {path:'formation', component:FormationComponentComponent, canActivate : [GuardGuard]},
+  {path:'formation/:id', component:FormationComponentComponent, canActivate : [GuardGuard]},
   {path:'commercial/historique', component:HistoriqueComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'participant/paiement', component:PaiementComponentComponent, canActivate : [GuardGuard], data : {role : "participant"}},
   {path:'participant/perso', component:ParticipantComponentComponent, canActivate : [GuardGuard], data : {role : "participant"}},
   {path:'commercial/rdv', component:RDVComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
-  {path:'admin/utilisateur', component:UtilisateurComponentComponent, canActivate : [GuardGuard], data : {role : "admin"}}
+  {path:'admin/utilisateur', component:UtilisateurComponentComponent, canActivate : [GuardGuard], data : {role : "admin"}},
+  {path:'admin/formateur', component:FormateurComponentComponent, canActivate : [GuardGuard], data : {role : "admin"}}
 ]
 
 @NgModule({

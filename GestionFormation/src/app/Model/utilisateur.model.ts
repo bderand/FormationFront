@@ -5,5 +5,5 @@ export class Utilisateur extends Personne{
 
     username!:string;
     password!:string;
-    rolr!:Role;
+    role!:Role;
 }

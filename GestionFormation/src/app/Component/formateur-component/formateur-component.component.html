@@ -1,1 +1,55 @@
-<p>formateur-component works!</p>
+
+<form #f="ngForm" (ngSubmit)="ajouter(f)">
+    <div class="row mb-2">
+        <div class="col-sm-2">
+            <input type="text" [(ngModel)]="formateur.nom" name="nom" class="form-control" [required]="true" placeholder="Nom">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" [(ngModel)]="formateur.prenom" name="prenom" class="form-control" [required]="true" placeholder="Prénom">
+        </div>
+        <div class="col-sm-1">
+            <input type="text" [(ngModel)]="formateur.age" name="age" class="form-control" [required]="true" placeholder="Age">
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-sm-3">
+            <input type="email" [(ngModel)]="formateur.email" name="email" class="form-control" [required]="true" placeholder="Email">
+        </div>
+        <div class="col-sm-2">
+            <input type="tel" [(ngModel)]="formateur.tel" name="tel" class="form-control" [required]="true" placeholder="Téléphone">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+        <input type="text" [(ngModel)]="formateur.username" name="username" class="form-control" [required]="true" placeholder="Nom d'utilisateur">
+    </div>
+    </div>
+    <input type="submit" class="btn btn-primary mt-2" value="Valider">
+</form>
+<div class="row">
+    <div class="col-sm-8">
+        <table class="table table-sm mt-2">
+            <thead>
+                <tr>
+                    <th>Formateur</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th></th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let f of formateurs">
+                    <td>{{f.nom | uppercase}} & {{f.prenom}}</td>
+                    <td>{{f.age}}</td>
+                    <td>{{f.email}}</td>
+                    <td>{{f.tel}}</td>
+                    <td><a *ngIf="f.formations && f.formations.length" (click)="redirectFormation(f.id)" class="link-primary">Formations</a></td>
+                    <td><a (click)="supprimer(f.id)" class="link-danger">Supprimer</a></td>
+                    <td><a (click)="modifier(f.id)" class="link-warning">Modifier</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
