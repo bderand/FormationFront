@@ -12,7 +12,17 @@ export class InterceptorInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if(sessionStorage.getItem("token")){
+      let chaine = sessionStorage.getItem("token") ?? "";
+      console.log(chaine)
+      const headers = {Authorization : chaine};
+      request = request.clone({
+        setHeaders: headers
+      })
+     
+      
+    }
     return next.handle(request);
   }
 }
