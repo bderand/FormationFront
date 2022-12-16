@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Utilisateur } from 'src/app/Model/utilisateur.model';
 import { UtilisateurServiceService } from 'src/app/Service/utilisateur-service.service';
@@ -38,6 +38,7 @@ export class ConnexionComponent implements OnInit{
       this.userService.loginUser(this.username).subscribe(response2 =>
         {
           this.user=response2;
+          console.log(this.user)
           sessionStorage.setItem('user', JSON.stringify(this.user));
           window.location.replace('/formation')
              

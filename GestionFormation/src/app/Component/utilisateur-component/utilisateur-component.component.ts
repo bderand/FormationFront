@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Utilisateur } from 'src/app/Model/utilisateur.model';
 
 @Component({
   selector: 'app-utilisateur-component',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class UtilisateurComponentComponent {
 
+  
 }
