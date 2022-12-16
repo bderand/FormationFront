@@ -17,6 +17,7 @@ const routes: Routes = [
   {path:'connexion', component:ConnexionComponent},
   {path:'commercial/inscription/:id', component:InscriptionComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'commercial/personnne', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
+  {path:'commercial/message/:id', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'formateur/perso', component:FormateurComponentComponent, canActivate : [GuardGuard], data : {role : "formateur"}},
   {path:'formation', component:FormationComponentComponent, canActivate : [GuardGuard]},
   {path:'commercial/historique', component:HistoriqueComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},

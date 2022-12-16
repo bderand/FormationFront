@@ -22,6 +22,7 @@ import { ConnexionComponent } from './Component/connexion/connexion.component';
 import { InscriptionComponent } from './Component/inscription/inscription.component';
 import { GuardGuard } from './Guard/guard.guard';
 import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
+import { MessageComponentComponent } from './Component/message-component/message-component.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
     HeaderComponent,
     FooterComponent,
     ConnexionComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    MessageComponentComponent
   ],
   imports: [
     RouterModule,

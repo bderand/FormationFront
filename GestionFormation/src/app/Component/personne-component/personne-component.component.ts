@@ -14,11 +14,13 @@ export class PersonneComponentComponent implements OnInit{
   personnes!:Personne[]
   personne!:Personne
   num!:number[]
+  someone!:string
   
   ngOnInit(): void {
     this.afficherAll()
     this.personne = new Personne()
-    this.num = [0]  
+    this.num = []
+    this.someone = ""  
   }
 
   constructor(private pservice : PersonneServiceService, private paservice : ParticipantServiceService) {}
@@ -62,7 +64,6 @@ export class PersonneComponentComponent implements OnInit{
         let formData = new FormData();
         console.log(this.personne)
         formData.append("personne", ""+this.personne);
-        formData.append("id_formation", ""+this.num);
         this.paservice.postparticipant(formData).subscribe(response =>
           {
             this.afficherAll();
@@ -70,6 +71,25 @@ export class PersonneComponentComponent implements OnInit{
           })
 
       })
+  }
+
+  research(){
+    this.pservice.getbyName(this.someone).subscribe(response =>
+      {
+        console.log(this.someone);
+        if(this.someone == ""){
+          this.afficherAll();
+          this.personne = new Personne();
+        } else {
+          this.personnes = response
+          this.personne = new Personne();
+        }
+        
+      })
+  }
+
+  message(id:number){
+    window.location.replace('commercial/message/'+id)
   }
 
 }
