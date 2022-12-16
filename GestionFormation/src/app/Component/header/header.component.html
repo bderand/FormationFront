@@ -18,7 +18,7 @@
         <a class="nav-link active" routerLink="historique"> historique</a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="formateur"> page du formateur</a> 
+        <a class="nav-link active" routerLink="formateur"> page du formateur {{user.nom}}</a> 
     </li>
     <!--<li class="nav-item">
         <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
@@ -27,7 +27,7 @@
         <a class="nav-link active"> exporter des utilisateurs </a> 
     </li>-->
     <li class="nav-item">
-        <a class="nav-link active" routerLink=#> deconnexion </a> 
+        <a (click)="logout()" class="nav-link active" routerLink=#> deconnexion </a> 
     </li>
     
 </ul>
