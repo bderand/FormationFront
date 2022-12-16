@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'participant/perso', component:ParticipantComponentComponent, canActivate : [GuardGuard], data : {role : "participant"}},
   {path:'commercial/rdv', component:RDVComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'admin/utilisateur', component:UtilisateurComponentComponent, canActivate : [GuardGuard], data : {role : "admin"}}
-
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

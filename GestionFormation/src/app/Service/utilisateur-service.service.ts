@@ -16,4 +16,5 @@ export class UtilisateurServiceService {
   loginUser(username:string){
     return this.http.get<Utilisateur>(`http://localhost:8020/api/utilisateurs/username/${username}`);
   }
+  
 }
