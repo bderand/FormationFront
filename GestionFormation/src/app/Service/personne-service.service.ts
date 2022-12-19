@@ -22,7 +22,8 @@ export class PersonneServiceService {
   }
 
   post(personne:Personne){
-    return this.http.put<Personne>('http://localhost:8020/api/personnes',personne)
+
+    return this.http.post<Personne>('http://localhost:8020/api/personnes',personne)
   }
 
 
