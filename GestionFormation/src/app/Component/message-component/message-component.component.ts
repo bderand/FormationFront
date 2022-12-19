@@ -33,7 +33,7 @@ export class MessageComponentComponent  implements OnInit{
   ajout(){
     let formData = new FormData();
     formData.append("titre", this.titre);
-    formData.append("message", this.message);
+    formData.append("message", this.message + " \n ce message a été envoyer par " + this.user.nom + " " + this.user.prenom + " \n pour lui envoyer un message, veuillez le contacter via l'adresse email suivante :" + this.user.email);
     formData.append("idu", ""+this.user.id);
     this.pservice.contact(formData, this.id).subscribe(response => 
       {

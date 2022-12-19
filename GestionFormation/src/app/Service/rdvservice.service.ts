@@ -17,6 +17,10 @@ export class RDVServiceService {
     return this.http.get<RDV>(`http://localhost:8020/api/rdvs/${id}`)
   }
 
+  getbycommercial(id:number){
+    return this.http.get<RDV[]>(`http://localhost:8020/api/rdvs/commercial/${id}`)
+  }
+
   post(rdv:RDV){
     return this.http.put<RDV>('http://localhost:8020/api/rdvs',rdv)
   }

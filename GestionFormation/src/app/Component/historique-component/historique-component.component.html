@@ -2,7 +2,7 @@
 
 
 
-<form #f="ngForm" (ngSubmit)="ajout(f)">
+<form *ngIf="id!=0" #f="ngForm" (ngSubmit)="ajout(f)">
     <fieldset>
         <legend>ajout d'un historique</legend>
         <div class="form-group row">
@@ -22,7 +22,7 @@
 </form>
 
 
-<div class="row">
+<div *ngIf="id==0" class="row">
     <div class="col-sm-8">
         <table class="table table-sm mt-2">
             <tr >
