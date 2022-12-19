@@ -50,25 +50,29 @@
   </fieldset>
 </form>
 
-<table class="table table-striped table-dark table-bordered">
-    <tr >
-        <td>id</td>
-        <td>nom</td>
-        <td>prenom</td>
-        <td>email</td>
-        <td>age</td>
-        <td>téléphone</td>
-    </tr>
-    <tr *ngFor="let perso of personnes">
-        <td>{{perso.id}}</td>
-        <td>{{perso.nom}}</td>
-        <td>{{perso.prenom}}</td>
-        <td>{{perso.email}}</td>
-        <td>{{perso.age}}</td>
-        <td>{{perso.tel}}</td>
-        <td><button (click)="supprimer(perso.id)" class="btn btn-primary">supprimer n°{{perso.id}}</button></td>
-        <td><button (click)="modifier(perso.id)" class="btn btn-primary">modifier n°{{perso.id}}</button></td>
-        <td><button  (click)="affectation(perso.id)"class="btn btn-primary">ajouter en tant que participant</button></td>
-        <td><button  (click)="message(perso.id)"class="btn btn-primary">contacter la personne</button></td>
-    </tr>
-</table>
+<div class="row">
+  <div class="col-sm-8">
+      <table class="table table-sm mt-2">
+        <tr >
+          <td>id</td>
+          <td>nom</td>
+          <td>prenom</td>
+          <td>email</td>
+          <td>age</td>
+          <td>téléphone</td>
+        </tr>
+        <tr *ngFor="let perso of personnes">
+          <td>{{perso.id}}</td>
+          <td>{{perso.nom}}</td>
+          <td>{{perso.prenom}}</td>
+          <td>{{perso.email}}</td>
+          <td>{{perso.age}}</td>
+          <td>{{perso.tel}}</td>
+          <td><a (click)="supprimer(perso.id)" class="link-danger">supprimer n°{{perso.id}}</a></td>
+          <td><a (click)="modifier(perso.id)" class="link-warning">modifier n°{{perso.id}}</a></td>
+          <td><a (click)="affectation(perso.id)"class="link-warning">ajouter en tant que participant</a></td>
+          <td><a (click)="message(perso.id)"class="link-warning">contacter la personne</a></td>
+        </tr>
+      </table>
+  </div>
+</div>

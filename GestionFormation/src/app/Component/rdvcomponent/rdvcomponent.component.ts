@@ -25,17 +25,18 @@ export class RDVComponentComponent implements OnInit{
   constructor (private rservice:RDVServiceService, private pservice : PersonneServiceService) {}
   
   ngOnInit(): void {
-    this.afficherAll();
+    
     this.rdv = new RDV()
     if(sessionStorage.getItem('user')){
       let chaine = sessionStorage.getItem('user') ?? "";
       this.user = JSON.parse(chaine);
     }
     this.afficherPersonne();
+    this.afficherAll();
   }
 
   afficherAll(){
-    this.rservice.getAll().subscribe(response => this.rdvs = response)
+    this.rservice.getbycommercial(this.user.id).subscribe(response => this.rdvs = response)
   }
 
   afficherPersonne(){
