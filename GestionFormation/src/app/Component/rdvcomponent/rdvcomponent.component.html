@@ -1,35 +1,39 @@
 <h1 class="text-center">Gestion des rendez-vous</h1>
 
-<form (ngSubmit)="ajout()">
+<form #f="ngForm" (ngSubmit)="ajout(f)">
     <fieldset>
         <legend>ajout d'un rendez-vous</legend>
         <div class="form-group row">
             <label for="rdv" class="col-sm-2 col-form-label">rdv</label>
             <div class="col-sm-10">
-              <input type="datetime-local" name="rdv" class="form-control" id="rdv" [(ngModel)]="rdv.rdv">
+              <input type="datetime-local" [required]="true" name="rdv" class="form-control" id="rdv" [(ngModel)]="rdv.rdv">
             </div>
         </div>
-        <select class="custom-select" name="personne" [(ngModel)]="idpersonne">
+        <select class="custom-select" [required]="true" name="personne" [(ngModel)]="idpersonne">
             <option *ngFor="let perso of personnes" [value]="perso.id">{{perso.nom}} {{perso.prenom}}</option>
         </select> <br>
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
     </fieldset>
 </form>
 
-<table class="table table-striped table-dark table-bordered">
-    <tr >
-        <td>id</td>
-        <td>rdv</td>
-        <td>commercial</td>
-        <td>personne</td>
-        <td>date</td>
-    </tr>
-    <tr *ngFor="let r of rdvs">
-        <td>{{r.id}}</td>
-        <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
-        <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
-        <td>{{r.rdv | date : "dd/MM/yyyy hh:mm a"}}</td>
-        <td><button  class="btn btn-primary">supprimer n°{{r.id}}</button></td>
-        <td><button  class="btn btn-primary">modifier n°{{r.id}}</button></td>
-    </tr>
-  </table>
+<div class="row">
+    <div class="col-sm-8">
+        <table class="table table-sm mt-2">
+            <tr >
+                <td>id</td>
+                <td>commercial</td>
+                <td>personne</td>
+                <td>date</td>
+             </tr>
+             <tr *ngFor="let r of rdvs">
+                <td>{{r.id}}</td>
+                <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
+                <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
+                <td>{{r.rdv | date : "dd/MM/yyyy hh:mm a"}}</td>
+                <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
+                <td><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}}</a></td>
+                <td><a (click)="historique(r.id)" class="link-warning">ajouter un historique n°{{r.id}}</a></td>
+             </tr>
+        </table>
+    </div>
+</div>

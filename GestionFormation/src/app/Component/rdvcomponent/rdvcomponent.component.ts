@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Commercial } from 'src/app/Model/commercial.model';
 import { Personne } from 'src/app/Model/personne.model';
 import { RDV } from 'src/app/Model/rdv.model';
 import { Utilisateur } from 'src/app/Model/utilisateur.model';
@@ -40,14 +42,13 @@ export class RDVComponentComponent implements OnInit{
     this.pservice.getAll().subscribe(response => this.personnes = response)
   }
 
-  ajout(){
-    console.log(this.idpersonne)
-    this.pservice.getbyId(this.idpersonne).subscribe(response =>
+  ajout(f:NgForm){
+    if(f.valid){
+      this.pservice.getbyId(this.idpersonne).subscribe(response =>
       {
         this.personne = response;
-        console.log(this.personne)
         this.rdv.personne = this.personne;
-        console.log(this.user)
+        this.rdv.commercial = new Commercial();
         this.rdv.commercial.id = this.user.id;
         this.rservice.post(this.rdv).subscribe(response => 
           {
@@ -55,6 +56,35 @@ export class RDVComponentComponent implements OnInit{
             this.rdv = new RDV()
             this.afficherPersonne();
           })
+      })
+    } else {
+      window.alert("Vérifiez les informations saisies");
+    }
+    
+  }
+
+  supprimer(id:number){
+    this.rservice.delete(id).subscribe(response =>
+      {
+        this.afficherAll();
+        this.rdv = new RDV();
+        this.afficherPersonne();
+      })
+  }
+
+  modifier(id:number){
+    this.rservice.getbyId(id).subscribe(response =>
+      {
+        this.afficherAll();
+        this.rdv = response;
+        this.afficherPersonne();
+      })
+  }
+
+  historique(id:number){
+    this.rservice.getbyId(id).subscribe(response =>
+      {
+        window.location.replace('commercial/historique/'+id)
       })
   }
 
