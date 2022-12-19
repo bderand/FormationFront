@@ -38,7 +38,6 @@ export class FormationComponentComponent implements OnInit {
     if(session != null)
     {
       this.user = JSON.parse(session);
-      console.log(this.user);
       if(this.user?.role.nom == 'formateur'){
         this.id_formateur = this.user.id;
        

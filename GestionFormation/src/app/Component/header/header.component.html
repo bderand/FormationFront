@@ -18,9 +18,6 @@
 <ul *ngIf="user != null && user.role.nom == 'admin'" class="nav nav-tabs mb-5">
     <li class="nav-item">
         <a class="nav-link active" routerLink="formation">Formation</a>
-    </li>
-    <li class="nav-item">
-       <a class="nav-link active" routerLink="connexion"> connexion </a> 
     </li> 
     <li class="nav-item">
         <a class="nav-link active" routerLink="inscription"> inscription </a> 
@@ -38,19 +35,22 @@
         <a class="nav-link active"> exporter des utilisateurs </a> 
     </li>-->
     <li class="nav-item">
+        <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
+    </li>
+    <li class="nav-item">
         <a  (click)="logout()" class="nav-link active" routerLink=#> deconnexion </a> 
     </li>
 </ul>
 
 <ul *ngIf="user != null && user.role.nom == 'formateur'" class="nav nav-tabs mb-5">
     <li class="nav-item">
-        <a class="nav-link active" routerLink="formation"> formation</a>
+        <a class="nav-link active" routerLink="formateur/perso">Mes formations</a> 
     </li>
     <li class="nav-item">
         <a class="nav-link active" routerLink="inscription"> inscription </a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="formateur"> page du formateur {{user.nom}}</a> 
+        <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
     </li>
     <!--<li class="nav-item">
         <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
@@ -78,7 +78,10 @@
         <a class="nav-link active" routerLink="RDV"> RDV </a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="historique"> Historique</a> 
+        <a class="nav-link active" routerLink="historique"> Historique</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
     </li>
     <!--<li class="nav-item">
         <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 

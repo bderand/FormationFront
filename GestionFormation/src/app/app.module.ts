@@ -23,6 +23,7 @@ import { InscriptionComponent } from './Component/inscription/inscription.compon
 
 import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
 import { MessageComponentComponent } from './Component/message-component/message-component.component';
+import { MonCompteComponent } from './Component/mon-compte/mon-compte.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { MessageComponentComponent } from './Component/message-component/message
     FooterComponent,
     ConnexionComponent,
     InscriptionComponent,
-    MessageComponentComponent
+    MessageComponentComponent,
+    MonCompteComponent,
   ],
   imports: [
     RouterModule,

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-4 border-left border-primary">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="form-group mb-2">
+                <label for="1">Nom</label>
+                <input type="text" id="1" class="form-control" [(ngModel)]="user.nom" name="nom" [disabled]="!modif" [required]="true"/>
+            </div>
+            <div class="form-group mb-2">
+                <label for="2">Prenom</label>
+                <input type="text" id="2" class="form-control" [(ngModel)]="user.prenom" name="prenom" [disabled]="!modif" [required]="true"/>
+            </div>
+            <div class="form-group mb-2">
+                <label for="4">Age</label>
+                <input id="4" class="form-control" [(ngModel)]="user.age" name="age" [disabled]="!modif" [required]="true"/>
+            </div>
+            <div class="form-group mb-2">
+                <label for="3">E-mail</label>
+                <input id="3" type="email" class="form-control" [(ngModel)]="user.email" name="email" [disabled]="!modif" [required]="true"/>
+            </div>
+            <div class="form-group mb-2">
+                <label for="3">Téléphone</label>
+                <input id="3" type="email" class="form-control" [(ngModel)]="user.tel" name="tel" [disabled]="!modif" [required]="true"/>
+            </div>
+            <input type="submit" class="btn btn-primary mb-4" [hidden]="hidden1" value="Valider">
+        </form>
+        <div class="btn btn-secondary mb-4" id="btn" (click)="modifCompte()">Modifier mes informations</div>
+
+    </div>
+    
+    <div class="col-sm-6"></div>
+</div>
