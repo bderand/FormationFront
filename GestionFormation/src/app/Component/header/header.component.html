@@ -1,6 +1,23 @@
-<ul class="nav nav-tabs">
+<ul *ngIf="user == null" class="nav nav-tabs mb-5">
+
     <li class="nav-item">
-        <a class="nav-link active" routerLink="formation"> formation</a>
+       <a class="nav-link active" routerLink="connexion"> connexion </a> 
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="inscription"> inscription </a> 
+    </li>
+
+    <!--<li class="nav-item">
+        <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active"> exporter des utilisateurs </a> 
+    </li>-->
+</ul>
+
+<ul *ngIf="user != null && user.role.nom == 'admin'" class="nav nav-tabs mb-5">
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="formation">Formation</a>
     </li>
     <li class="nav-item">
        <a class="nav-link active" routerLink="connexion"> connexion </a> 
@@ -9,16 +26,59 @@
         <a class="nav-link active" routerLink="inscription"> inscription </a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="commercial/personnne"> prospects </a> 
+        <a class="nav-link active" routerLink="admin/formateur">Formateurs</a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="commercial/rdv"> RDV </a> 
+        <a class="nav-link active" routerLink="admin/utilisateur">Utilisateurs</a> 
+    </li>
+    <!--<li class="nav-item">
+        <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="historique"> historique</a> 
+        <a class="nav-link active"> exporter des utilisateurs </a> 
+    </li>-->
+    <li class="nav-item">
+        <a  (click)="logout()" class="nav-link active" routerLink=#> deconnexion </a> 
+    </li>
+</ul>
+
+<ul *ngIf="user != null && user.role.nom == 'formateur'" class="nav nav-tabs mb-5">
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="formation"> formation</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="inscription"> inscription </a> 
     </li>
     <li class="nav-item">
         <a class="nav-link active" routerLink="formateur"> page du formateur {{user.nom}}</a> 
+    </li>
+    <!--<li class="nav-item">
+        <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active"> exporter des utilisateurs </a> 
+    </li>-->
+    <li class="nav-item">
+        <a (click)="logout()" class="nav-link active" routerLink=#> deconnexion </a> 
+    </li>
+    
+</ul>
+
+<ul *ngIf="user != null && user.role.nom == 'commercial'" class="nav nav-tabs mb-5">
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="formation"> Formation</a>
+    </li> 
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="inscription"> inscription </a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="commercial/personnne"> Prospects </a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="RDV"> RDV </a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="historique"> Historique</a> 
     </li>
     <!--<li class="nav-item">
         <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 

@@ -20,9 +20,10 @@ import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { ConnexionComponent } from './Component/connexion/connexion.component';
 import { InscriptionComponent } from './Component/inscription/inscription.component';
-import { GuardGuard } from './Guard/guard.guard';
+
 import { InterceptorInterceptor } from './Interceptor/interceptor.interceptor';
 import { MessageComponentComponent } from './Component/message-component/message-component.component';
+
 
 @NgModule({
   declarations: [
@@ -55,8 +56,8 @@ import { MessageComponentComponent } from './Component/message-component/message
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorInterceptor,
     multi: true,
-  },
-  GuardGuard
+  }
+
 ],
   bootstrap: [AppComponent]
 })

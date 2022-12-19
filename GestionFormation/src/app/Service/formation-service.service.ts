@@ -5,7 +5,6 @@ import { Formateur } from '../Model/formateur.model';
 import { Formation } from '../Model/formation.model';
 import { Participant } from '../Model/participant.model';
 
-import { Formation } from '../Model/formation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,32 +19,32 @@ export class FormationServiceService {
 
   public getFormations_all(){
 
-    this.http.get<Formation[]>(this.url);
+    return this.http.get<Formation[]>(this.url);
   }
 
   public getFormations_id(id:number){
 
-    this.http.get<Formation>(this.url + `/${id}`);
+    return this.http.get<Formation>(this.url + `/${id}`);
   }
 
   public getFormation_participants(id:number){
 
-    this.http.get<Participant[]>(this.url + `/${id}/participants`);
+    return this.http.get<Participant[]>(this.url + `/${id}/participants`);
   }
 
   public addFormateur(data:FormData){
 
-    this.http.post<Formateur>(this.url + "/formateur",data);
+    return this.http.post<Formateur>(this.url + "/formateur",data);
   }
 
   public addFormation(formation:Formation){
 
-    this.http.post(this.url, formation);
+    return this.http.post(this.url, formation);
   }
 
   public suppFormation(id:number){
 
-    this.http.delete(this.url + `/${id}`);
+   return this.http.delete(this.url + `/${id}`);
   }
 
 }
