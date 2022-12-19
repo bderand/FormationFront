@@ -1,1 +1,46 @@
-<p>historique-component works!</p>
+<h1 class="text-center">Gestion des historiques</h1>
+
+
+
+<form #f="ngForm" (ngSubmit)="ajout(f)">
+    <fieldset>
+        <legend>ajout d'un historique</legend>
+        <div class="form-group row">
+            <label for="appel" class="col-sm-2 col-form-label">appel</label>
+            <div class="col-sm-10">
+              <input type="datetime-local" [required]="true" name="appel" class="form-control" id="appel" [(ngModel)]="appel">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="commentaire" class="col-sm-2 col-form-label">commentaire</label>
+            <div class="col-sm-10">
+              <input type="text" [required]="true" name="commentaire" class="form-control" id="commentaire" [(ngModel)]="commentaire">
+            </div>
+        </div>
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
+    </fieldset>
+</form>
+
+
+<div class="row">
+    <div class="col-sm-8">
+        <table class="table table-sm mt-2">
+            <tr >
+                <td>id</td>
+                <td>commentaire</td>
+                <td>commercial</td>
+                <td>personne</td>
+                <td>date</td>
+             </tr>
+             <tr *ngFor="let r of historiques">
+                <td>{{r.id}}</td>
+                <td>{{r.commentaire}}</td>
+                <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
+                <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
+                <td>{{r.appel | date : "dd/MM/yyyy hh:mm a"}}</td>
+                <td><a class="link-danger">supprimer n°{{r.id}}</a></td>
+                <td><a class="link-warning">modifier n°{{r.id}}</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
