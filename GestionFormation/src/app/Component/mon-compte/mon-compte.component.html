@@ -20,12 +20,25 @@
             </div>
             <div class="form-group mb-2">
                 <label for="3">Téléphone</label>
-                <input id="3" type="email" class="form-control" [(ngModel)]="user.tel" name="tel" [disabled]="!modif" [required]="true"/>
+                <input id="3" type="tel" class="form-control" [(ngModel)]="user.tel" name="tel" [disabled]="!modif" [required]="true"/>
+            </div>
+            <div class="form-group mb-2">
+                <label for="4">Nom d'utilisateur</label>
+                <input id="4" class="form-control" [(ngModel)]="user.username" name="username" [disabled]="!modif" [required]="true"/>
             </div>
             <input type="submit" class="btn btn-primary mb-4" [hidden]="hidden1" value="Valider">
         </form>
         <div class="btn btn-secondary mb-4" id="btn" (click)="modifCompte()">Modifier mes informations</div>
-
+        <form #f="ngForm" (ngSubmit)="onSubmit_2nd(f)">
+            <div class="form-group mb-2">
+                <input id="5" class="form-control" type="password" [(ngModel)]="mpts" name="mpts" placeholder="Ancien mot de passe" [disabled]="!modif2" [required]="true">
+            </div>
+            <div class="form-group">
+                <input id="6" class="form-control" type="password" [(ngModel)]="mpts_new" name="mpts_new" placeholder="Nouveau mot de passe" [disabled]="!modif2" [required]="true">
+                <input type="submit" id="modifMpts" class="btn btn-primary mt-2" [hidden]="hidden2" value="Valider">
+            </div>
+            <div class="btn btn-secondary mt-2" id="btn2" (click)="modifMpts()">Modifier le mot de passe</div>
+        </form>
     </div>
     
     <div class="col-sm-6"></div>
