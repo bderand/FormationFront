@@ -16,5 +16,15 @@ export class UtilisateurServiceService {
   loginUser(username:string){
     return this.http.get<Utilisateur>(`http://localhost:8020/api/utilisateurs/username/${username}`);
   }
+
+  isCorrectPassword(data:FormData){
+
+    return this.http.post("http://localhost:8020/api/utilisateurs/matched", data);
+  }
+
+  addUtilisateur(user:Utilisateur){
+
+    return this.http.post("http://localhost:8020/api/utilisateurs",user);
+  }
   
 }
