@@ -30,5 +30,6 @@ export class ParticipantServiceService {
 
   demanderPaiement(data:FormData){
     return this.http.post("http://localhost:8020/api/participants/paiement",data);
+
   }
 }

@@ -6,7 +6,9 @@
         <div class="form-group row">
             <label for="rdv" class="col-sm-2 col-form-label">rdv</label>
             <div class="col-sm-10">
-              <input type="datetime-local" [required]="true" name="rdv" class="form-control" id="rdv" [(ngModel)]="rdv.rdv">
+              <input type="datetime-local" [required]="true" name="rdv" class="form-control" id="rdv"  [ngModel]="rdv.rdv  | date:'yyyy-MM-dd HH:mm'"  (ngModelChange)="rdv.rdv=$event">
+
+
             </div>
         </div>
         <select class="custom-select" [required]="true" name="personne" [(ngModel)]="idpersonne">
@@ -29,7 +31,7 @@
                 <td>{{r.id}}</td>
                 <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
                 <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
-                <td>{{r.rdv | date : "dd/MM/yyyy hh:mm a"}}</td>
+                <td>{{r.rdv | date : "dd/MM/yyyy HH:mm"}}</td>
                 <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
                 <td><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}}</a></td>
                 <td><a (click)="historique(r.id)" class="link-warning">ajouter un historique n°{{r.id}}</a></td>

@@ -1,1 +1,17 @@
-<p>inscription works!</p>
+<h1 class="text-center">inscription à une formation </h1>
+
+<form #f="ngForm" (ngSubmit)="ajout(f)">
+    <fieldset>
+        <legend>inscription un participant à une formation</legend>
+        <select class="custom-select" [required]="true" name="personne" [(ngModel)]="idpersonne">
+            <option *ngFor="let perso of personnes" [value]="perso.id">{{perso.nom}} {{perso.prenom}}</option>
+        </select> <br>
+
+        <div *ngFor="let form of formations">
+            <input type="radio"  [value]="form.id" [required]="true" name="formation" [(ngModel)]="idformation"> {{form.nom}} {{form.prix}}€
+        </div> <br>
+        
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
+    </fieldset>
+    <p>{{message}}</p>
+</form>
