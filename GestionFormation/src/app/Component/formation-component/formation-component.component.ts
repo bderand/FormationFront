@@ -7,6 +7,7 @@ import { Participant } from 'src/app/Model/participant.model';
 import { Utilisateur } from 'src/app/Model/utilisateur.model';
 import { FormateurServiceService } from 'src/app/Service/formateur-service.service';
 import { FormationServiceService } from 'src/app/Service/formation-service.service';
+import { ParticipantServiceService } from 'src/app/Service/participant-service.service';
 
 @Component({
   selector: 'app-formation-component',
@@ -17,6 +18,7 @@ import { FormationServiceService } from 'src/app/Service/formation-service.servi
 export class FormationComponentComponent implements OnInit {
 
   id_formateur!:number;
+  id_participant!:number;
   formations!:Formation[];
   formation!:Formation;
   formateurs!:Formateur[];
@@ -24,7 +26,7 @@ export class FormationComponentComponent implements OnInit {
   afficher!:boolean;
   user!:Utilisateur | null;
 
-  constructor(private formationService:FormationServiceService, private formateurService:FormateurServiceService, private router:ActivatedRoute, private route:Router){}
+  constructor(private formationService:FormationServiceService, private formateurService:FormateurServiceService, private participantService:ParticipantServiceService, private router:ActivatedRoute, private route:Router){}
 
 
   ngOnInit(): void {
@@ -41,6 +43,11 @@ export class FormationComponentComponent implements OnInit {
       if(this.user?.role.nom == 'formateur'){
         this.id_formateur = this.user.id;
        
+      }
+
+      if(this.user?.role.nom == 'participant'){
+        
+        this.getFormations_ParticipantId(this.user.id);
       }
     }
     else
@@ -70,6 +77,22 @@ export class FormationComponentComponent implements OnInit {
             })
         }
       })
+  }
+
+  getFormations_ParticipantId(id:number){
+
+    this.participantService.getFormations_participantsID(id).subscribe(response=>
+      {
+        this.formations = response;
+        for(let f of this.formations){
+          this.formationService.getFormation_participants(f.id).subscribe(reponse2=>
+            {
+              
+              f.participants = reponse2;
+            })
+        }
+      });
+
   }
 
   getFormations_idFormateur(id:number){
