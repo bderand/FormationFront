@@ -27,6 +27,8 @@ export class HistoriqueComponentComponent implements OnInit{
   rdv!:RDV
   date!:Date
   personne!:Personne
+  st!:string
+  message!:string
 
   constructor(private route:ActivatedRoute, private hservice:HistoriqueServiceService, private rservice:RDVServiceService, private pservice:PersonneServiceService){}
   
@@ -42,11 +44,13 @@ export class HistoriqueComponentComponent implements OnInit{
       this.rservice.getbyId(this.id).subscribe(response =>
         {
           this.rdv = response;
-          formatDate(this.rdv.rdv,'yyyy-MM-ddThh:mm', 'en-US');
+          this.st = formatDate(this.rdv.rdv,'yyyy-MM-ddThh:mm', 'en-US');
+          console.log("le format string : " + this.st)
           console.log(this.rdv.rdv);
-          this.appel = new Date();
+          this.appel = this.rdv.rdv
           this.commentaire ="";
           this.historique = new Historique();
+          this.message = "";
         })
     }
   }
@@ -74,6 +78,8 @@ export class HistoriqueComponentComponent implements OnInit{
             this.appel = new Date();
             this.commentaire ="";
             this.historique = new Historique();
+            this.message = "vous avez enregistrez un historique"
+            window.location.replace('commercial/rdv');
             
           })
       })
@@ -81,6 +87,13 @@ export class HistoriqueComponentComponent implements OnInit{
       window.alert("Vérifiez les informations saisies");
     }
     
+  }
+
+  supprimer(id:number){
+    this.hservice.delete(id).subscribe(response =>
+      {
+        this.afficherAll()
+      })
   }
 
 

@@ -22,7 +22,7 @@ export class RDVServiceService {
   }
 
   post(rdv:RDV){
-    return this.http.put<RDV>('http://localhost:8020/api/rdvs',rdv)
+    return this.http.post<RDV>('http://localhost:8020/api/rdvs',rdv)
   }
 
 

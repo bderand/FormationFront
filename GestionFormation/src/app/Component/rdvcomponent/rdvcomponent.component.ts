@@ -20,6 +20,7 @@ export class RDVComponentComponent implements OnInit{
   personnes!:Personne[]
   user!:Utilisateur
   personne!:Personne
+  example!:Date
 
 
   constructor (private rservice:RDVServiceService, private pservice : PersonneServiceService) {}
@@ -27,6 +28,7 @@ export class RDVComponentComponent implements OnInit{
   ngOnInit(): void {
     
     this.rdv = new RDV()
+    this.rdv.rdv = new Date()
     if(sessionStorage.getItem('user')){
       let chaine = sessionStorage.getItem('user') ?? "";
       this.user = JSON.parse(chaine);
@@ -51,6 +53,7 @@ export class RDVComponentComponent implements OnInit{
         this.rdv.personne = this.personne;
         this.rdv.commercial = new Commercial();
         this.rdv.commercial.id = this.user.id;
+        console.log(this.rdv.rdv);
         this.rservice.post(this.rdv).subscribe(response => 
           {
             this.afficherAll();
@@ -78,6 +81,7 @@ export class RDVComponentComponent implements OnInit{
       {
         this.afficherAll();
         this.rdv = response;
+
         this.afficherPersonne();
       })
   }
