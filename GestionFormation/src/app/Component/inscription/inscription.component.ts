@@ -30,7 +30,7 @@ export class InscriptionComponent implements OnInit{
   }
 
   afficherP(){
-    this.pservice.getAll().subscribe(response => this.personnes=response)
+    this.pservice.getParticipants_all().subscribe(response => this.personnes=response)
   }
 
   afficherF(){
@@ -42,7 +42,7 @@ export class InscriptionComponent implements OnInit{
       let formData = new FormData();
       formData.append("idp",""+this.idpersonne);
       formData.append("idf",""+this.idformation);
-      this.pservice.postformation(formData).subscribe(response =>
+      this.pservice.postparticipant(formData).subscribe(response =>
       {
           this.afficherP();
           this.afficherF();
