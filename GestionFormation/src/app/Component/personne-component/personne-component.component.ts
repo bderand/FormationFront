@@ -13,13 +13,13 @@ export class PersonneComponentComponent implements OnInit{
   
   personnes!:Personne[]
   personne!:Personne
-  num!:number[]
+  num!:number
   someone!:string
   
   ngOnInit(): void {
     this.afficherAll()
     this.personne = new Personne()
-    this.num = []
+    this.num = 0
     this.someone = ""  
   }
 
@@ -58,16 +58,24 @@ export class PersonneComponentComponent implements OnInit{
   }
 
   affectation(id:number){
+    
     this.pservice.getbyId(id).subscribe(response =>
       {
         this.personne = response;
         let formData = new FormData();
         console.log(this.personne)
-        formData.append("personne", ""+this.personne);
+        formData.append("id", ""+this.personne.id);
+        formData.append("nom", ""+this.personne.nom);
+        formData.append("prenom", ""+this.personne.prenom);
+        formData.append("age", ""+this.personne.age);
+        formData.append("email", ""+this.personne.email);
+        formData.append("tel", ""+this.personne.tel);
+        formData.append("id_formation",""+this.num);
         this.paservice.postparticipant(formData).subscribe(response =>
           {
             this.afficherAll();
             this.personne = new Personne();
+            //window.location.replace('commercial/inscription/'+id)
           })
 
       })

@@ -17,7 +17,7 @@ import { MonCompteComponent } from './Component/mon-compte/mon-compte.component'
 
 const routes: Routes = [
   {path:'connexion', component:ConnexionComponent},
-  {path:'commercial/inscription/:id', component:InscriptionComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
+  {path:'commercial/inscription', component:InscriptionComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'commercial/personnne', component:PersonneComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'commercial/message/:id', component:MessageComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'formateur/perso', component:FormationComponentComponent, canActivate : [GuardGuard], data : {role : "formateur"}},

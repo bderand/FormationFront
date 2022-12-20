@@ -64,12 +64,28 @@
     
 </ul>
 
+<ul *ngIf="user != null && user.role.nom == 'participant'" class="nav nav-tabs mb-5">
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="participant/perso">Mes formations</a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="paiement">Mes paiements</a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
+    </li>
+    <li class="nav-item">
+        <a (click)="logout()" class="nav-link active" routerLink=#> deconnexion </a> 
+    </li>
+    
+</ul>
+
 <ul *ngIf="user != null && user.role.nom == 'commercial'" class="nav nav-tabs mb-5">
     <li class="nav-item">
         <a class="nav-link active" routerLink="formation"> Formation</a>
     </li> 
     <li class="nav-item">
-        <a class="nav-link active" routerLink="inscription"> inscription </a> 
+        <a class="nav-link active" routerLink="commercial/inscription"> inscription </a> 
     </li>
     <li class="nav-item">
         <a class="nav-link active" routerLink="commercial/personnne"> Prospects </a> 

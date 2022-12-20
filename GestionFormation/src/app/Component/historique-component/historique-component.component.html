@@ -8,7 +8,7 @@
         <div class="form-group row">
             <label for="appel" class="col-sm-2 col-form-label">appel</label>
             <div class="col-sm-10">
-              <input type="datetime-local" [required]="true" name="appel" class="form-control" id="appel" [(ngModel)]="appel">
+              <input type="datetime-local" [required]="true" name="appel" class="form-control" id="appel" [(ngModel)]="appel" [ngModel]="appel  | date:'yyyy-MM-dd HH:mm'"  (ngModelChange)="appel=$event">
             </div>
         </div>
         <div class="form-group row">
@@ -20,6 +20,8 @@
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
     </fieldset>
 </form>
+
+<p>{{message}}</p>
 
 
 <div *ngIf="id==0" class="row">
@@ -38,8 +40,8 @@
                 <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
                 <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
                 <td>{{r.appel | date : "dd/MM/yyyy hh:mm a"}}</td>
-                <td><a class="link-danger">supprimer n°{{r.id}}</a></td>
-                <td><a class="link-warning">modifier n°{{r.id}}</a></td>
+                <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
+                <!--<td><a class="link-warning">modifier n°{{r.id}}</a></td>-->
              </tr>
         </table>
     </div>
