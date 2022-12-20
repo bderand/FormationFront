@@ -1,0 +1,9 @@
+#reste
+{
+    color: red;
+}
+
+#reste:hover
+{
+    text-decoration: underline;
+}
