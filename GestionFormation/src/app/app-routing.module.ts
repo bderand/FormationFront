@@ -26,6 +26,7 @@ const routes: Routes = [
   {path:'formation/:id', component:FormationComponentComponent, canActivate : [GuardGuard]},
   {path:'commercial/historique/:id', component:HistoriqueComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'participant/paiement', component:PaiementComponentComponent, canActivate : [GuardGuard], data : {role : "participant"}},
+  {path:'assistant/paiement', component:PaiementComponentComponent, canActivate : [GuardGuard], data : {role : "assistant"}},
   {path:'participant/perso', component:ParticipantComponentComponent, canActivate : [GuardGuard], data : {role : "participant"}},
   {path:'commercial/rdv', component:RDVComponentComponent, canActivate : [GuardGuard], data : {role : "commercial"}},
   {path:'admin/utilisateur', component:UtilisateurComponentComponent, canActivate : [GuardGuard], data : {role : "admin"}},

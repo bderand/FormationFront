@@ -3,10 +3,7 @@
     <li class="nav-item">
        <a class="nav-link active" routerLink="connexion"> connexion </a> 
     </li> 
-    <li class="nav-item">
-        <a class="nav-link active" routerLink="inscription"> inscription </a> 
-    </li>
-
+    
     <!--<li class="nav-item">
         <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
     </li>
@@ -19,9 +16,6 @@
     <li class="nav-item">
         <a class="nav-link active" routerLink="formation">Formation</a>
     </li> 
-    <li class="nav-item">
-        <a class="nav-link active" routerLink="inscription"> inscription </a> 
-    </li>
     <li class="nav-item">
         <a class="nav-link active" routerLink="admin/formateur">Formateurs</a> 
     </li>
@@ -47,9 +41,6 @@
         <a class="nav-link active" routerLink="formateur/perso">Mes formations</a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="inscription"> inscription </a> 
-    </li>
-    <li class="nav-item">
         <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
     </li>
     <!--<li class="nav-item">
@@ -66,13 +57,14 @@
 
 <ul *ngIf="user != null && user.role.nom == 'participant'" class="nav nav-tabs mb-5">
     <li class="nav-item">
-        <a class="nav-link active" routerLink="participant/perso">Mes formations</a> 
+        <a class="nav-link active" routerLink="/formation">Mes formations</a> 
     </li>
     <li class="nav-item">
+
         <a class="nav-link active" routerLink="formation">formations</a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link active" routerLink="paiement">Mes paiements</a> 
+        <a class="nav-link active" routerLink="participant/paiement">Mes paiements</a> 
     </li>
     <li class="nav-item">
         <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
@@ -87,6 +79,7 @@
     <li class="nav-item">
         <a class="nav-link active" routerLink="formation"> Formation</a>
     </li> 
+
     <li class="nav-item">
         <a class="nav-link active" routerLink="commercial/inscription"> inscription </a> 
     </li>
@@ -101,6 +94,30 @@
     </li>
       <li class="nav-item">
         <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
+    </li>
+    <!--<li class="nav-item">
+        <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active"> exporter des utilisateurs </a> 
+    </li>-->
+    <li class="nav-item">
+        <a (click)="logout()" class="nav-link active" routerLink=#> deconnexion </a> 
+    </li>
+    
+</ul>
+
+<ul *ngIf="user != null && user.role.nom == 'assistant'" class="nav nav-tabs mb-5">
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="formation">Formations</a> 
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="/MonCompte">{{user.nom}} {{user.prenom}}</a> 
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link active" routerLink="/assistant/paiement">Paiements</a> 
     </li>
     <!--<li class="nav-item">
         <a (click)="exportAnnonce()" class="nav-link active"> exporter des annonces </a> 

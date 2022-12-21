@@ -18,17 +18,23 @@ export class PaiementServiceService {
   }
 
   getbyParticipant(id:number){
-    return this.http.get<Paiement>(`http://localhost:8020/api/paiements/participant/${id}`)
+    return this.http.get<Paiement[]>(`http://localhost:8020/api/paiements/participant/${id}`)
   }
 
-  getbyFormation(){
-    return this.http.get<Paiement>(`http://localhost:8020/api/paiements/formation`)
+
+  getRestantPaiement(data:FormData){
+
+    return this.http.post<number>('http://localhost:8020/api/paiements/formation',data)
+  }
+
+  getPaiementByFormationAndParticipant(data:FormData){
+
+    return this.http.post<Paiement>('http://localhost:8020/api/paiements/formation&Participant',data)
   }
 
   post(paiement:Paiement){
     return this.http.put<Paiement>('http://localhost:8020/api/paiements',paiement)
   }
-
 
   delete(id:number){
     return this.http.delete<Paiement>(`http://localhost:8020/api/paiements/${id}`)
@@ -41,4 +47,6 @@ export class PaiementServiceService {
   postMessage(id:number){
     return this.http.get<Paiement>(`http://localhost:8020/api/paiements/contact/${id}`)
   }
+
+
 }

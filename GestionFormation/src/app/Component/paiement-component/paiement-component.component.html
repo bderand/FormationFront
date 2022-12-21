@@ -1,1 +1,54 @@
-<p>paiement-component works!</p>
+<div *ngIf="user!=null && user.role.nom == 'assistant'" class="justify-content-center text-center">
+    <label>Participants:</label>
+    <select class="mx-2" [(ngModel)]="id_participant">
+        <option [selected]="id_participant==undefined" [ngValue]="undefined">Choisir le participant</option>
+        <option *ngFor="let part of participants" [ngValue]="part.id">{{part.nom}} {{part.prenom}}</option>
+    </select>
+    <button (click)="PaiementDisplay(id_participant)" class="btn btn-primary btn-sm">Voir les paiements</button>
+</div>
+
+<table class="table mt-5" [hidden]="hidden">
+    <thead>
+        <tr>
+            <th>Paiement de la formation</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td [width]="400"><select class="form-control" (change)="getPaiements_formations()" [(ngModel)]="id_formation">
+                <option [selected]="id_formation == undefined" [ngValue]="undefined">-- Choisir le paiement d'une formation --</option>
+                <option *ngFor="let f of formations" [ngValue]="f.id">{{f.nom}}</option>
+            </select></td>
+            <td [hidden]="hidden2 || !exist">Payé : {{formation.prix - reste}} &euro;</td>
+            <td id="reste" [hidden]="hidden2 || !exist">Restant : {{reste}} &euro;</td>
+            <td><button class="btn btn-warning btn-sm" *ngIf="user!=null && user.role.nom =='assistant' && !hidden2 && reste != 0 && exist" (click)="demandePaiement(reste)">Demander le paiement</button>
+                <span class="text-success text-bold text-underline" *ngIf="demandeEnvoye  && exist">Demande envoyée</span>
+                <form #f="ngForm" (ngSubmit)="envoyerPaiement(f)" *ngIf="user!=null && user.role.nom =='participant' && !hidden2 && reste != 0 && exist">
+                   <div class="input-group">
+                        <input class="form-control" type="number" scale="0.01" [(ngModel)]="payee" name="payee" [required]="true">
+                        <div class="input-group-append">
+                        <input type="submit" value="Payer" class="btn btn-outline-success">
+                    </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="table mt-5" [hidden]="hidden">
+    <thead>
+        <tr>
+            <th>Formation</th>
+            <th>Reste à payer &euro;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of paiements">
+            <td>{{p.formation.nom}}</td>
+            <td>{{p.reste}} &euro;</td>
+        </tr>
+    </tbody>
+</table>

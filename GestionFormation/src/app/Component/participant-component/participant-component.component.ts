@@ -30,6 +30,7 @@ export class ParticipantComponentComponent implements OnInit{
   }
 
   afficheF(){
+
     this.pservice.getbyparticipant(this.user.id).subscribe(response => 
       {
         this.formations = response
@@ -48,6 +49,7 @@ export class ParticipantComponentComponent implements OnInit{
 
     this.participants = tableau;
     this.afficher = true;
+
   }
 
 
