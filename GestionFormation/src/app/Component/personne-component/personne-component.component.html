@@ -36,17 +36,23 @@
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
     </fieldset>
 </form>
-
+<!--
+<form (ngSubmit)="csv()">
+  <input type="file" name="file" (change)="selectEvent($event)" placeholder="importer un fichier csv">
+  <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
+</form>
+-->
 <form (ngSubmit)="research()">
   <fieldset>
     <legend>recherche une personne avec un nom</legend>
     <div class="form-group row">
       <label for="someone" class="col-sm-2 col-form-label">personne</label>
       <div class="col-sm-10">
-        <input type="text" name="someone" class="form-control" id="someone" [(ngModel)]="someone" placeholder="chercher un utilisateur">
+        <input type="text" name="someone" class="form-control" id="someone" [(ngModel)]="someone" placeholder="chercher une personne">
       </div>
   </div>
     <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
+    <input class="btn btn-primary btn-lg btn-block" (click)="afficherAll()" value="réinitialiser">
   </fieldset>
 </form>
 

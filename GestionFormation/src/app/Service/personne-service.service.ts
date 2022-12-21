@@ -35,6 +35,10 @@ export class PersonneServiceService {
     return this.http.post<Personne>(`http://localhost:8020/api/personnes/contact/${id}`, data)
   }
 
+  csv(data : FormData){
+    return this.http.post<Personne>('http://localhost:8020/api/personnes/csv',data)
+  }
+
   
 
 }

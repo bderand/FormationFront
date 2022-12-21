@@ -15,6 +15,7 @@ export class PersonneComponentComponent implements OnInit{
   personne!:Personne
   num!:number
   someone!:string
+  file!: File
   
   ngOnInit(): void {
     this.afficherAll()
@@ -57,6 +58,10 @@ export class PersonneComponentComponent implements OnInit{
       })
   }
 
+  selectEvent(event: any): void {
+    this.file = event.target.files[0];
+  }
+
   affectation(id:number){
     
     this.pservice.getbyId(id).subscribe(response =>
@@ -93,6 +98,16 @@ export class PersonneComponentComponent implements OnInit{
           this.personne = new Personne();
         }
         
+      })
+  }
+
+  csv(){
+    let formData = new FormData();
+    formData.append("file", this.file);
+    this.pservice.csv(formData).subscribe(response =>
+      {
+        this.afficherAll();
+        this.personne = new Personne();
       })
   }
 

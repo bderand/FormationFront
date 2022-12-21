@@ -2,7 +2,7 @@
 
 <form #f="ngForm" (ngSubmit)="ajout(f)">
     <fieldset>
-        <legend>inscription un participant à une formation</legend>
+        <legend>inscription d'un participant à une formation</legend>
         <select class="custom-select" [required]="true" name="personne" [(ngModel)]="idpersonne">
             <option *ngFor="let perso of personnes" [value]="perso.id">{{perso.nom}} {{perso.prenom}}</option>
         </select> <br>

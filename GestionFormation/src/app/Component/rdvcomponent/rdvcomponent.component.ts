@@ -6,6 +6,7 @@ import { RDV } from 'src/app/Model/rdv.model';
 import { Utilisateur } from 'src/app/Model/utilisateur.model';
 import { PersonneServiceService } from 'src/app/Service/personne-service.service';
 import { RDVServiceService } from 'src/app/Service/rdvservice.service';
+import { MonCompteComponent } from '../mon-compte/mon-compte.component';
 
 @Component({
   selector: 'app-rdvcomponent',
@@ -20,7 +21,7 @@ export class RDVComponentComponent implements OnInit{
   personnes!:Personne[]
   user!:Utilisateur
   personne!:Personne
-  example!:Date
+  date!:Date
 
 
   constructor (private rservice:RDVServiceService, private pservice : PersonneServiceService) {}
@@ -29,6 +30,8 @@ export class RDVComponentComponent implements OnInit{
     
     this.rdv = new RDV()
     this.rdv.rdv = new Date()
+    this.date = new Date()
+    
     if(sessionStorage.getItem('user')){
       let chaine = sessionStorage.getItem('user') ?? "";
       this.user = JSON.parse(chaine);
@@ -37,8 +40,15 @@ export class RDVComponentComponent implements OnInit{
     this.afficherAll();
   }
 
+
   afficherAll(){
-    this.rservice.getbycommercial(this.user.id).subscribe(response => this.rdvs = response)
+    this.rservice.getbycommercial(this.user.id).subscribe(response => 
+      {
+        this.rdvs = response
+        this.rdvs.sort((a, b) => new Date(b.rdv).getTime() - new Date(a.rdv).getTime());
+        //this.rdvs.filter(a => new Date(a.rdv).getTime == new Date().getTime)
+      })
+
   }
 
   afficherPersonne(){
@@ -81,7 +91,8 @@ export class RDVComponentComponent implements OnInit{
       {
         this.afficherAll();
         this.rdv = response;
-
+        console.log(this.rdv.rdv.getTime)
+        console.log(new Date().getTime())
         this.afficherPersonne();
       })
   }
@@ -91,6 +102,16 @@ export class RDVComponentComponent implements OnInit{
       {
         window.location.replace('commercial/historique/'+id)
       })
+  }
+
+  checkdate(d:Date){
+    let da = new Date(d)
+    console.log(da.getTime())
+    if(da.getTime() > new Date().getTime()){
+      return true
+    } else {
+      return false
+    }
   }
 
 }
