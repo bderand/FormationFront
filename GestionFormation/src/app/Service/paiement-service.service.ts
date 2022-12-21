@@ -36,7 +36,6 @@ export class PaiementServiceService {
     return this.http.put<Paiement>('http://localhost:8020/api/paiements',paiement)
   }
 
-
   delete(id:number){
     return this.http.delete<Paiement>(`http://localhost:8020/api/paiements/${id}`)
   }

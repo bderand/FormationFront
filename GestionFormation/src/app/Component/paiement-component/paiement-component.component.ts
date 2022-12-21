@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { Formation } from 'src/app/Model/formation.model';
 import { Paiement } from 'src/app/Model/paiement.model';
 import { Participant } from 'src/app/Model/participant.model';
@@ -18,6 +18,7 @@ export class PaiementComponentComponent implements OnInit {
 
   paiements!:Paiement[];
   paiement!:Paiement;
+  payee!:number;
   participants!:Participant[];
   participant!:Participant;
   formations!:Formation[];
@@ -154,6 +155,24 @@ export class PaiementComponentComponent implements OnInit {
       }
     }
    
+  }
+
+  envoyerPaiement(f:NgForm){
+
+    if(f.valid && this.payee <= this.reste){
+
+      let data = new FormData();
+      data.append('argent',`${this.payee}`);
+      data.append('id_paiement',`${this.paiement.id}`);
+      this.participantService.envoiPaiement(data).subscribe(response=>
+        {
+          window.location.reload();
+        })
+
+    }
+    else{
+      window.alert("Impossible d'envoyer");
+    }
   }
 
 }
