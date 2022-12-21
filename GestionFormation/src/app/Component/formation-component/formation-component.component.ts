@@ -59,7 +59,7 @@ export class FormationComponentComponent implements OnInit {
     {
       this.getFormations_idFormateur(this.id_formateur);
     }
-    else
+    if(this.id_formateur == undefined && this.user != null && this.user.role.nom == 'assistant' || this.user?.role.nom == 'admin')
     {
       this.getFormations_all();
     }
@@ -84,6 +84,7 @@ export class FormationComponentComponent implements OnInit {
     this.participantService.getFormations_participantsID(id).subscribe(response=>
       {
         this.formations = response;
+      
         for(let f of this.formations){
           this.formationService.getFormation_participants(f.id).subscribe(reponse2=>
             {

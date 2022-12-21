@@ -24,8 +24,17 @@
             </select></td>
             <td [hidden]="hidden2 || !exist">Payé : {{formation.prix - reste}} &euro;</td>
             <td id="reste" [hidden]="hidden2 || !exist">Restant : {{reste}} &euro;</td>
-            <td><button class="btn btn-warning btn-sm" *ngIf="!hidden2 && reste != 0 && exist" (click)="demandePaiement(reste)">Demander le paiement</button>
-                <span class="text-success text-bold text-underline" *ngIf="demandeEnvoye  && exist">Demande envoyée</span></td>
+            <td><button class="btn btn-warning btn-sm" *ngIf="user!=null && user.role.nom =='assistant' && !hidden2 && reste != 0 && exist" (click)="demandePaiement(reste)">Demander le paiement</button>
+                <span class="text-success text-bold text-underline" *ngIf="demandeEnvoye  && exist">Demande envoyée</span>
+                <form #f="ngForm" (ngSubmit)="envoyerPaiement(f)" *ngIf="user!=null && user.role.nom =='participant' && !hidden2 && reste != 0 && exist">
+                   <div class="input-group">
+                        <input class="form-control" type="number" scale="0.01" [(ngModel)]="payee" name="payee" [required]="true">
+                        <div class="input-group-append">
+                        <input type="submit" value="Payer" class="btn btn-outline-success">
+                    </div>
+                    </div>
+                </form>
+            </td>
         </tr>
     </tbody>
 </table>

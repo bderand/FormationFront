@@ -32,4 +32,9 @@ export class ParticipantServiceService {
     return this.http.post("http://localhost:8020/api/participants/paiement",data);
 
   }
+
+  envoiPaiement(data:FormData){
+
+    return this.http.post("http://localhost:8020/api/participants/envoi/paiement",data);
+  }
 }
