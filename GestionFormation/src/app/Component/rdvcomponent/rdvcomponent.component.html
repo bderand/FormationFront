@@ -26,6 +26,7 @@
                 <td>commercial</td>
                 <td>personne</td>
                 <td>date</td>
+                <td colspan="3"></td>
              </tr>
              <tr *ngFor="let r of rdvs">
                 <td>{{r.id}}</td>
@@ -33,7 +34,7 @@
                 <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
                 <td>{{r.rdv | date : "dd/MM/yyyy HH:mm"}}</td>
                 <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
-                <td><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}}</a></td>
+                <td *ngIf="checkdate(r.rdv)"><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}} </a></td>
                 <td><a (click)="historique(r.id)" class="link-warning">ajouter un historique n°{{r.id}}</a></td>
              </tr>
         </table>
