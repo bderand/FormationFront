@@ -25,18 +25,21 @@ export class FormationComponentComponent implements OnInit {
   participants!:Participant[];
   afficher!:boolean;
   user!:Utilisateur | null;
+  idf!:number;
+  message!:string;
 
   constructor(private formationService:FormationServiceService, private formateurService:FormateurServiceService, private participantService:ParticipantServiceService, private router:ActivatedRoute, private route:Router){}
 
 
   ngOnInit(): void {
-
+    this.idf = 0;
     this.afficher = false;
     this.formation = new Formation();
     this.formation.formateur = new Formateur();
     this.id_formateur = this.router.snapshot.params['id'];
     this.getFormateurs_all();
     let session = sessionStorage.getItem('user');
+    this.message = ""
     if(session != null)
     {
       this.user = JSON.parse(session);
@@ -59,7 +62,7 @@ export class FormationComponentComponent implements OnInit {
     {
       this.getFormations_idFormateur(this.id_formateur);
     }
-    if(this.id_formateur == undefined && this.user != null && this.user.role.nom == 'assistant' || this.user?.role.nom == 'admin')
+    if(this.id_formateur == undefined && this.user != null && this.user.role.nom == 'assistant' || this.user?.role.nom == 'admin' || this.user?.role.nom == 'commercial')
     {
       this.getFormations_all();
     }
@@ -94,6 +97,36 @@ export class FormationComponentComponent implements OnInit {
         }
       });
 
+  }
+
+  delete_formation(id:number){
+    this.formationService.delete_part(this.idf,id).subscribe(response =>
+      {
+        this.getFormateurs_all();
+        let session = sessionStorage.getItem('user');
+        if(session != null)
+        {
+          this.user = JSON.parse(session);
+          if(this.user?.role.nom == 'formateur'){
+            this.id_formateur = this.user.id; 
+          }
+          if(this.user?.role.nom == 'participant'){
+            this.getFormations_ParticipantId(this.user.id);
+          }
+        }
+        else
+        {
+         this.user = null;
+        }
+        if(this.id_formateur != undefined)
+        {
+          this.getFormations_idFormateur(this.id_formateur);
+        }
+        if(this.id_formateur == undefined && this.user != null && this.user.role.nom == 'assistant' || this.user?.role.nom == 'admin' || this.user?.role.nom == 'commercial')
+        {
+          this.getFormations_all();
+        }
+      })
   }
 
   getFormations_idFormateur(id:number){
@@ -163,10 +196,11 @@ export class FormationComponentComponent implements OnInit {
       })
   }
 
-  afficherParticipants(tableau:Participant[]){
+  afficherParticipants(tableau:Participant[],id:number){
 
     this.participants = tableau;
     this.afficher = true;
+    this.idf = id;
   }
 
 

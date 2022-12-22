@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Commercial } from 'src/app/Model/commercial.model';
+import { Historique } from 'src/app/Model/historique.model';
 import { Personne } from 'src/app/Model/personne.model';
 import { RDV } from 'src/app/Model/rdv.model';
 import { Utilisateur } from 'src/app/Model/utilisateur.model';
+import { HistoriqueServiceService } from 'src/app/Service/historique-service.service';
 import { PersonneServiceService } from 'src/app/Service/personne-service.service';
 import { RDVServiceService } from 'src/app/Service/rdvservice.service';
 import { MonCompteComponent } from '../mon-compte/mon-compte.component';
@@ -22,22 +24,29 @@ export class RDVComponentComponent implements OnInit{
   user!:Utilisateur
   personne!:Personne
   date!:Date
+  r!:RDV
+  h!:Historique[]
+  bo!: Map<number,boolean>[]
 
 
-  constructor (private rservice:RDVServiceService, private pservice : PersonneServiceService) {}
+
+  constructor (private rservice:RDVServiceService, private pservice : PersonneServiceService, private hservice : HistoriqueServiceService) {}
   
   ngOnInit(): void {
     
     this.rdv = new RDV()
     this.rdv.rdv = new Date()
     this.date = new Date()
+    this.r = new RDV()
     
+
     if(sessionStorage.getItem('user')){
       let chaine = sessionStorage.getItem('user') ?? "";
       this.user = JSON.parse(chaine);
     }
     this.afficherPersonne();
     this.afficherAll();
+    this.bo.length = this.afficherAll.length
   }
 
 
@@ -113,5 +122,25 @@ export class RDVComponentComponent implements OnInit{
       return false
     }
   }
+
+  checkhistorique(id:number){
+    this.rservice.getbyId(id).subscribe(response =>
+      {
+        this.hservice.getAll().subscribe(response2 =>
+          {
+            this.r = response
+            this.h = response2
+            for(var i=0; i<this.h.length; i++){
+              if(this.h[i].commercial.id == this.r.commercial.id && this.h[i].personne.id == this.r.personne.id ){
+                this.bo[i].set(this.h[i].commercial.id, true)
+              } else {
+                this.bo[i].set(this.h[i].commercial.id,false);
+              }
+            }
+            
+          })
+      })
+  }
+
 
 }

@@ -12,6 +12,7 @@
                     <th>Début</th>
                     <th>Fin</th>
                     <th></th>
+                    <th>pdf</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,7 @@
                     <td>{{f.debut | date:"dd/MM/yyyy"}}</td>
                     <td>{{f.fin | date:"dd/MM/yyyy"}}</td>
                     <td><a *ngIf="f.participants && f.participants.length != 0" class="link-success" (click)="afficherParticipants(f.participants)" >Participants</a></td>
+                    <td><button (click)="showPDF(f.id)">téléchargement</button></td>
                 </tr>
             </tbody>
         </table>

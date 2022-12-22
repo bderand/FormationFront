@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Formateur } from 'src/app/Model/formateur.model';
+import { Formation } from 'src/app/Model/formation.model';
 import { FormateurServiceService } from 'src/app/Service/formateur-service.service';
 
 @Component({
@@ -14,13 +15,15 @@ export class FormateurComponentComponent implements OnInit {
 
   formateurs!:Formateur[];
   formateur!:Formateur;
+  afficher!:boolean;
+  formations!:Formation[];
 
   constructor(private formateurService:FormateurServiceService, private route:Router){}
 
   ngOnInit(): void {
 
     this.formateur = new Formateur();
-    
+    this.afficher =false;
     this.getFormateurs_all();
   }
 
@@ -85,9 +88,10 @@ export class FormateurComponentComponent implements OnInit {
       })
   }
 
-  redirectFormation(id:number){
-
-    this.route.navigateByUrl(`/formation/${id}`);
+  redirectFormation(tableau:Formation[]){
+    this.formations = tableau;
+    this.afficher = true;
+    //this.route.navigateByUrl(`/formation/${id}`);
   }
 
 

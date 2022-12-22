@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { Formation } from '../Model/formation.model';
 import { Participant } from '../Model/participant.model';
 
@@ -13,6 +13,10 @@ export class ParticipantServiceService {
 
   postparticipant(data :  FormData){
     return this.http.post<Participant>('http://localhost:8020/api/participants/nouveau',data);
+  }
+
+  affectation(data : FormData){
+    return this.http.post<boolean>('http://localhost:8020/api/participants/affectation',data);
   }
 
   getFormations_participantsID(id:number){
@@ -40,9 +44,10 @@ export class ParticipantServiceService {
     return this.http.post("http://localhost:8020/api/participants/envoi/paiement",data);
   }
 
-  getPDF(data:FormData) : Observable<Blob> {
-    return this.http.post<Blob>("http://localhost:8020/api/participant/pdf",data);
-  }
 
+  public getPDF(data:FormData): Observable<Blob> {   
+    let uri = 'http://localhost:8020/api/participants/pdf';
+    return this.http.post(uri, data , { responseType: 'blob' });
+}
 
 }

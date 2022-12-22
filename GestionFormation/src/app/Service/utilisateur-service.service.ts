@@ -26,5 +26,17 @@ export class UtilisateurServiceService {
 
     return this.http.post("http://localhost:8020/api/utilisateurs",user);
   }
+
+  getAll(){
+    return this.http.get<Utilisateur[]>("http://localhost:8020/api/utilisateurs");
+  }
+
+  delete(id:number){
+    return this.http.delete<Utilisateur>(`http://localhost:8020/api/utilisateurs/${id}`);
+  }
+
+  getbyid(id:number){
+    return this.http.get<Utilisateur>(`http://localhost:8020/api/utilisateurs/${id}`);
+  }
   
 }

@@ -47,4 +47,8 @@ export class FormationServiceService {
    return this.http.delete(this.url + `/${id}`);
   }
 
+  public delete_part(id:number,idp:number){
+    return this.http.get<Formation>(this.url + `/${id}/participants/${idp}`);
+  }
+
 }
