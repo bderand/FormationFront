@@ -1,6 +1,7 @@
 <h1 class="text-center">Gestion des utilisateurs </h1>
 
-<form >
+
+<form (ngSubmit)="ajout()">
     <fieldset>
         <legend>ajout d'un personne</legend>
         <div class="form-group row">
@@ -33,6 +34,18 @@
             <input type="text" name="tel" class="form-control" id="tel" [(ngModel)]="utilisateur.tel" placeholder="téléphone de la personne">
           </div>
         </div>
+        <div class="form-group row">
+          <label for="username" class="col-sm-2 col-form-label">nom d'utilisateur</label>
+          <div class="col-sm-10">
+            <input type="text" name="username" class="form-control" id="username" [(ngModel)]="utilisateur.username" placeholder="nom de l'utilisateur">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="password" class="col-sm-2 col-form-label">mot de passe</label>
+          <div class="col-sm-10">
+            <input type="password" name="password" class="form-control" id="password" [(ngModel)]="utilisateur.password" placeholder="mot de passe de l'utilisateur">
+          </div>
+        </div>
         <select class="custom-select" [required]="true" name="personne" [(ngModel)]="idrole">
             <option *ngFor="let role of roles" [value]="role.id">{{role.nom}}</option>
         </select> <br>
@@ -61,8 +74,8 @@
             <td>{{u.age}}</td>
             <td>{{u.tel}}</td>
             <td>{{u.role.nom}}</td>
-            <td><a class="link-danger">supprimer n°{{u.id}}</a></td>
-            <td><a class="link-warning">modifier n°{{u.id}}</a></td>
+            <td><a (click)="supprimer(u.id)" class="link-danger">supprimer n°{{u.id}}</a></td>
+            <td><a (click)="modifier(u.id)" class="link-warning">modifier n°{{u.id}}</a></td>
           </tr>
         </table>
     </div>

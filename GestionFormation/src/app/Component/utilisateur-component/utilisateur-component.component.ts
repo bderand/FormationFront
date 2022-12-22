@@ -53,12 +53,12 @@ export class UtilisateurComponentComponent implements OnInit{
   }
 
   ajout(): void{
-   
     this.rservice.getbyId(this.idrole).subscribe(response =>
       {
         this.role = response;
         this.utilisateur.role = this.role;
-        this.uservice.addUtilisateur(this.utilisateur).subscribe(response =>
+        this.uservice.addUtilisateur(this.utilisateur).subscribe(response2 =>
+
         {
           this.afficherAll()
           this.utilisateur = new Utilisateur()
