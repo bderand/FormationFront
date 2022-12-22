@@ -21,23 +21,28 @@
 <div class="row">
     <div class="col-sm-8">
         <table class="table table-sm mt-2">
-            <tr >
-                <td>id</td>
-                <td>commercial</td>
-                <td>personne</td>
-                <td>date</td>
-                <td colspan="3"></td>
-             </tr>
-             <tr *ngFor="let r of rdvs">
-                <td>{{r.id}}</td>
-                <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
-                <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
-                <td>{{r.rdv | date : "dd/MM/yyyy HH:mm"}}</td>
-                <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
-                <td *ngIf="checkdate(r.rdv)"><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}} </a></td>
-                <td *ngIf="checkdate(r.rdv)==false"></td>
-                <td><a (click)="historique(r.id)" class="link-warning">ajouter un historique n°{{r.id}}</a></td>
-             </tr>
+            <thead>
+                <tr >
+                    <td>id</td>
+                    <td>commercial</td>
+                    <td>personne</td>
+                    <td>date</td>
+                    <td colspan="3"></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of rdvs">
+                    <td>{{r.id}}</td>
+                    <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
+                    <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
+                    <td>{{r.rdv | date : "dd/MM/yyyy HH:mm"}}</td>
+                    <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
+                    <td *ngIf="checkdate(r.rdv)"><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}} </a></td>
+                    <td *ngIf="checkdate(r.rdv)==false"></td>
+                    <td><a (click)="historique(r.id)" class="link-warning">ajouter un historique n°{{r.id}}</a></td>
+                </tr>
+            </tbody>
+             
         </table>
     </div>
 </div>

@@ -27,22 +27,27 @@
 <div *ngIf="id==0" class="row">
     <div class="col-sm-8">
         <table class="table table-sm mt-2">
-            <tr >
-                <td>id</td>
-                <td>commentaire</td>
-                <td>commercial</td>
-                <td>personne</td>
-                <td>date</td>
-             </tr>
-             <tr *ngFor="let r of historiques">
-                <td>{{r.id}}</td>
-                <td>{{r.commentaire}}</td>
-                <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
-                <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
-                <td>{{r.appel | date : "dd/MM/yyyy hh:mm a"}}</td>
-                <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
-                <!--<td><a class="link-warning">modifier n°{{r.id}}</a></td>-->
-             </tr>
+            <thead>
+                <tr >
+                    <td>id</td>
+                    <td>commentaire</td>
+                    <td>commercial</td>
+                    <td>personne</td>
+                    <td>date</td>
+                </tr> 
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of historiques">
+                    <td>{{r.id}}</td>
+                    <td>{{r.commentaire}}</td>
+                    <td>{{r.commercial.nom}} {{r.commercial.prenom}}</td>
+                    <td>{{r.personne.nom}} {{r.personne.prenom}}</td>
+                    <td>{{r.appel | date : "dd/MM/yyyy hh:mm a"}}</td>
+                    <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
+                    <!--<td><a class="link-warning">modifier n°{{r.id}}</a></td>-->
+                </tr> 
+            </tbody>
+             
         </table>
     </div>
 </div>
