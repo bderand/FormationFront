@@ -47,6 +47,8 @@ export class UtilisateurComponentComponent implements OnInit{
   modifier(id:number){
     this.uservice.getbyid(id).subscribe(response =>
       {
+        
+        this.idrole = response.role.id;
         this.utilisateur = response;
         this.afficherAll();
       })
@@ -63,6 +65,7 @@ export class UtilisateurComponentComponent implements OnInit{
           this.afficherAll()
           this.utilisateur = new Utilisateur()
           this.afficher_role();
+          this.idrole = 0;
         },
         err=>
         {
