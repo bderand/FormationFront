@@ -46,8 +46,9 @@
             <input type="password" name="password" class="form-control" id="password" [(ngModel)]="utilisateur.password" placeholder="mot de passe de l'utilisateur">
           </div>
         </div>
-        <select class="custom-select" [required]="true" name="personne" [(ngModel)]="idrole">
-            <option *ngFor="let role of roles" [value]="role.id">{{role.nom}}</option>
+        <select class="custom-control mb-2" [required]="true" name="personne" [(ngModel)]="idrole">
+            <option [selected]="idrole == 0" [ngValue]="0">--Choisir un role--</option>
+            <option *ngFor="let role of roles" [selected]="role.id == idrole" [ngValue]="role.id">{{role.nom}}</option>
         </select> <br>
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
     </fieldset>
