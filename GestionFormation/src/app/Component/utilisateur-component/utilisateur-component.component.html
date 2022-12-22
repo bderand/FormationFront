@@ -50,34 +50,39 @@
             <option [selected]="idrole == 0" [ngValue]="0">--Choisir un role--</option>
             <option *ngFor="let role of roles" [selected]="role.id == idrole" [ngValue]="role.id">{{role.nom}}</option>
         </select> <br>
-        <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
+        <input class="btn btn-primary mt-2" type="submit" value="valider">
     </fieldset>
 </form>
 
 
 <div class="row">
-    <div class="col-sm-8">
-        <table class="table table-sm mt-2">
-          <tr >
-            <td>id</td>
-            <td>nom</td>
-            <td>prenom</td>
-            <td>email</td>
-            <td>age</td>
-            <td>téléphone</td>
-            <td>role</td>
-          </tr>
-          <tr *ngFor="let u of utilisateurs">
-            <td>{{u.id}}</td>
-            <td>{{u.nom}}</td>
-            <td>{{u.prenom}}</td>
-            <td>{{u.email}}</td>
-            <td>{{u.age}}</td>
-            <td>{{u.tel}}</td>
-            <td>{{u.role.nom}}</td>
-            <td><a (click)="supprimer(u.id)" class="link-danger">supprimer n°{{u.id}}</a></td>
-            <td><a (click)="modifier(u.id)" class="link-warning">modifier n°{{u.id}}</a></td>
-          </tr>
+    <div class="col-sm-9">
+        <table class="table  mt-2">
+          <thead >
+            <tr>
+              <td>id</td>
+              <td>nom</td>
+              <td>prenom</td>
+              <td>email</td>
+              <td>age</td>
+              <td>téléphone</td>
+              <td>role</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of utilisateurs">
+              <td>{{u.id}}</td>
+              <td>{{u.nom}}</td>
+              <td>{{u.prenom}}</td>
+              <td>{{u.email}}</td>
+              <td>{{u.age}}</td>
+              <td>{{u.tel}}</td>
+              <td>{{u.role.nom}}</td>
+              <td><a (click)="supprimer(u.id)" class="link-danger">supprimer n°{{u.id}}</a></td>
+              <td><a (click)="modifier(u.id)" class="link-warning">modifier n°{{u.id}}</a></td>
+            </tr>
+          </tbody>
+          
         </table>
     </div>
   </div>

@@ -41,10 +41,10 @@
   <input type="file" name="file" (change)="selectEvent($event)" placeholder="importer un fichier csv">
   <input class="btn btn-primary btn-lg btn-block" type="submit" value="valider">
 </form>
--->
+
 <form (ngSubmit)="research()">
   <fieldset>
-    <legend>recherche une personne avec un nom</legend>
+    <legend>/legend>
     <div class="form-group row">
       <label for="someone" class="col-sm-2 col-form-label">personne</label>
       <div class="col-sm-10">
@@ -55,30 +55,39 @@
     <input class="btn btn-primary btn-lg btn-block" (click)="afficherAll()" value="réinitialiser">
   </fieldset>
 </form>
+-->
+
+
+<p><input type="text" ng-model="test" id="myInput" onkeyup="myFunction()" placeholder="chercher une personne avec un nom"></p>
 
 <div class="row">
   <div class="col-sm-8">
       <table class="table table-sm mt-2">
-        <tr >
-          <td>id</td>
-          <td>nom</td>
-          <td>prenom</td>
-          <td>email</td>
-          <td>age</td>
-          <td>téléphone</td>
+        <thead>
+          <tr >
+            <td>id</td>
+            <td>nom</td>
+            <td>prenom</td>
+            <td>email</td>
+            <td>age</td>
+            <td>téléphone</td>
         </tr>
-        <tr *ngFor="let perso of personnes">
-          <td>{{perso.id}}</td>
-          <td>{{perso.nom}}</td>
-          <td>{{perso.prenom}}</td>
-          <td>{{perso.email}}</td>
-          <td>{{perso.age}}</td>
-          <td>{{perso.tel}}</td>
-          <td><a (click)="supprimer(perso.id)" class="link-danger">supprimer n°{{perso.id}}</a></td>
-          <td><a (click)="modifier(perso.id)" class="link-warning">modifier n°{{perso.id}}</a></td>
-          <td><a (click)="affectation(perso.id)"class="link-warning">ajouter en tant que participant</a></td>
-          <td><a (click)="message(perso.id)"class="link-warning">contacter la personne</a></td>
-        </tr>
+        </thead>
+        <tbody id="myTbody">
+          <tr *ngFor="let perso of personnes">
+            <td>{{perso.id}}</td>
+            <td>{{perso.nom}}</td>
+            <td>{{perso.prenom}}</td>
+            <td>{{perso.email}}</td>
+            <td>{{perso.age}}</td>
+            <td>{{perso.tel}}</td>
+            <td><a (click)="supprimer(perso.id)" class="link-danger">supprimer n°{{perso.id}}</a></td>
+            <td><a (click)="modifier(perso.id)" class="link-warning">modifier n°{{perso.id}}</a></td>
+            <td><a (click)="affectation(perso.id)"class="link-warning">ajouter en tant que participant</a></td>
+            <td><a (click)="message(perso.id)"class="link-warning">contacter la personne</a></td>
+          </tr>
+        </tbody>
+        
       </table>
   </div>
 </div>

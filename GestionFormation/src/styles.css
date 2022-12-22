@@ -1,3 +1,28 @@
 a{
     cursor : pointer;
 }
+
+body{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    height : 100vh;
+    margin: 0;
+
+}
+
+#myInput{
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    text-align: center;
+}
+
+.btn{
+    display: flex;
+    margin: 10px auto;
+}
+
+.form-group{
+    margin : 10px auto;
+}
