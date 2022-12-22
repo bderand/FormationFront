@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Formation } from '../Model/formation.model';
 import { Participant } from '../Model/participant.model';
 
@@ -29,6 +30,7 @@ export class ParticipantServiceService {
   }
 
   demanderPaiement(data:FormData){
+
     return this.http.post("http://localhost:8020/api/participants/paiement",data);
 
   }
@@ -37,4 +39,10 @@ export class ParticipantServiceService {
 
     return this.http.post("http://localhost:8020/api/participants/envoi/paiement",data);
   }
+
+  getPDF(data:FormData) : Observable<Blob> {
+    return this.http.post<Blob>("http://localhost:8020/api/participant/pdf",data);
+  }
+
+
 }
