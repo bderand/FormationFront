@@ -17,6 +17,7 @@ export class ParticipantComponentComponent implements OnInit{
   user!:Utilisateur
   participants!:Participant[]
   afficher!:boolean
+  blob!:Blob
 
   constructor(private pservice : ParticipantServiceService, private fservice : FormationServiceService){}
 
@@ -52,5 +53,21 @@ export class ParticipantComponentComponent implements OnInit{
 
   }
 
+  public showPDF(id:number): void {
+    let data = new FormData();
+    data.append("id_participant", ""+this.user.id);
+    data.append("id_formation", ""+id);
+    this.pservice.getPDF(data).subscribe((data) => {
+
+      this.blob = new Blob([data], {type: 'application/pdf'});
+    
+      var downloadURL = window.URL.createObjectURL(data);
+      var link = document.createElement('a');
+      link.href = downloadURL;
+      link.download = "inscription_formation.pdf";
+      link.click();
+    
+    });
+  }
 
 }
