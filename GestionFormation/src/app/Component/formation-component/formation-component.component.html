@@ -54,7 +54,7 @@
                     <td>{{f.prix}} &euro;</td>
                     <td>{{f.debut | date:"dd/MM/yyyy"}}</td>
                     <td>{{f.fin | date:"dd/MM/yyyy"}}</td>
-                    <td><a *ngIf="f.participants && f.participants.length != 0" class="link-success" (click)="afficherParticipants(f.participants)" >Participants</a></td>
+                    <td><a *ngIf="f.participants && f.participants.length != 0" class="link-success" (click)="afficherParticipants(f.participants,f.id)" >Participants</a></td>
                     <td><a *ngIf="user!=null && user.role.nom=='admin' && !f.formateur" (click)="modifier(f.id)" class="link-success">Associez un formateur</a></td>
                     <td><a *ngIf="user!=null && user.role.nom=='admin'" (click)="supprimer(f.id)" class="link-danger">Supprimer</a></td>
                     <td><a *ngIf="user!=null && user.role.nom=='admin'" (click)="modifier(f.id)" class="link-warning">Modifier</a></td>
@@ -67,7 +67,8 @@
     <div [hidden]="!afficher" class="col-sm-4">
         <div class="h5 text-secondary border-bottom border-secondary">{{participants ? participants.length : "Participant"}}  dans la formation</div>
         <ul class="list-group list-group-flush">
-            <li *ngFor="let p of participants" class="list-group-item">{{p.nom | uppercase}} {{p.prenom}}</li>
+            <li *ngFor="let p of participants" class="list-group-item">{{p.nom | uppercase}} {{p.prenom}} <a *ngIf="user!=null && (user.role.nom=='commercial' || user.role.nom=='admin' || user.role.nom=='assistant')" (click)="delete_formation(p.id)" class="link-danger">Supprimer</a></li>
         </ul>
     </div>
 </div>
+<p>{{message}}</p>
