@@ -14,6 +14,10 @@ export class ParticipantServiceService {
     return this.http.post<Participant>('http://localhost:8020/api/participants/nouveau',data);
   }
 
+  affectation(data : FormData){
+    return this.http.post<boolean>('http://localhost:8020/api/participants/affectation',data);
+  }
+
   getFormations_participantsID(id:number){
     return this.http.get<Formation[]>(`http://localhost:8020/api/participants/${id}/formations`);
   }

@@ -31,7 +31,7 @@ export class ParticipantComponentComponent implements OnInit{
 
   afficheF(){
 
-    this.pservice.getbyparticipant(this.user.id).subscribe(response => 
+    this.pservice.getFormations_participantsID(this.user.id).subscribe(response => 
       {
         this.formations = response
         for(let f of this.formations){

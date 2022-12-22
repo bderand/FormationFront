@@ -35,6 +35,7 @@
                 <td>{{r.rdv | date : "dd/MM/yyyy HH:mm"}}</td>
                 <td><a (click)="supprimer(r.id)" class="link-danger">supprimer n°{{r.id}}</a></td>
                 <td *ngIf="checkdate(r.rdv)"><a (click)="modifier(r.id)" class="link-warning">modifier n°{{r.id}} </a></td>
+                <td *ngIf="checkdate(r.rdv)==false"></td>
                 <td><a (click)="historique(r.id)" class="link-warning">ajouter un historique n°{{r.id}}</a></td>
              </tr>
         </table>

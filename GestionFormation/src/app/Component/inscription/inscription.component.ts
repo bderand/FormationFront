@@ -20,6 +20,7 @@ export class InscriptionComponent implements OnInit{
   personnes!:Personne[]
   formations!:Formation[]
   message!:string
+  b!:boolean
 
   constructor ( private pservice : ParticipantServiceService, private fservice : FormationServiceService) {}
 
@@ -40,13 +41,21 @@ export class InscriptionComponent implements OnInit{
   ajout(f:NgForm){
     if(f.valid){
       let formData = new FormData();
+      console.log(this.idpersonne);
+      console.log(this.idformation);
       formData.append("idp",""+this.idpersonne);
       formData.append("idf",""+this.idformation);
-      this.pservice.postparticipant(formData).subscribe(response =>
+      this.pservice.affectation(formData).subscribe(response =>
       {
-          this.afficherP();
-          this.afficherF();
-          this.message = "vous avez affecté un participant à une formation"
+          this.b = response;
+          if(this.b == false){
+            this.message = "vous avez déjà valider la formation au participant"
+          } else {
+            this.afficherP();
+            this.afficherF();
+            this.message = "vous avez affecté un participant à une formation"
+          }
+          
       })
     }
   }
