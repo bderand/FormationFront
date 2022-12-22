@@ -102,7 +102,30 @@ export class FormationComponentComponent implements OnInit {
   delete_formation(id:number){
     this.formationService.delete_part(this.idf,id).subscribe(response =>
       {
-        this.message = "ok"
+        this.getFormateurs_all();
+        let session = sessionStorage.getItem('user');
+        if(session != null)
+        {
+          this.user = JSON.parse(session);
+          if(this.user?.role.nom == 'formateur'){
+            this.id_formateur = this.user.id; 
+          }
+          if(this.user?.role.nom == 'participant'){
+            this.getFormations_ParticipantId(this.user.id);
+          }
+        }
+        else
+        {
+         this.user = null;
+        }
+        if(this.id_formateur != undefined)
+        {
+          this.getFormations_idFormateur(this.id_formateur);
+        }
+        if(this.id_formateur == undefined && this.user != null && this.user.role.nom == 'assistant' || this.user?.role.nom == 'admin' || this.user?.role.nom == 'commercial')
+        {
+          this.getFormations_all();
+        }
       })
   }
 
