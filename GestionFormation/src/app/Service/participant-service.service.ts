@@ -34,6 +34,7 @@ export class ParticipantServiceService {
   }
 
   demanderPaiement(data:FormData){
+
     return this.http.post("http://localhost:8020/api/participants/paiement",data);
 
   }
@@ -42,6 +43,7 @@ export class ParticipantServiceService {
 
     return this.http.post("http://localhost:8020/api/participants/envoi/paiement",data);
   }
+
 
   public getPDF(data:FormData): Observable<Blob> {   
     let uri = 'http://localhost:8020/api/participants/pdf';
